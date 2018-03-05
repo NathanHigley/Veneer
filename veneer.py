@@ -1,32 +1,23 @@
-def main():
+def veneer():
 #IP
 	print ("[ VENEER ]")
-
 	a = input("\tIP : \tOCTET 1: ")
 	b = input("\t\tOCTET 2: ")
 	c = input("\t\tOCTET 3: ")
 	d = input("\t\tOCTET 4: ")
-	
-	while (a < 0 or b < 0 or c < 0 or d < 0):
-		print ("Invalid IP value.")
-		a = input("\t\tOCTET 1: ")
-		b = input("\t\tOCTET 2: ")
-		c = input("\t\tOCTET 3: ")
-		d = input("\t\tOCTET 4: ")
-		
-	IP = [0, 0, 0, 0]
 
-	IP[0] = IP[0] + a
-	IP[1] = IP[1] + b
-	IP[2] = IP[2] + c
-	IP[3] = IP[3] + d
+	ip = [0, 0, 0, 0]
+	ip[0] = int(a)
+	ip[1] = int(b)
+	ip[2] = int(c)
+	ip[3] = int(d)
 #NMASK,CIDR
 	cidr = -1
-	nmask =  [-1,-1,-1,-1]
+	nmask = [0,0,0,0]
 	cidr = input("\tCIDR : ")
-	
+
 	nmask[0] = 255; nmask[1] = 255;nmask[2] = 255;nmask[3] = 255;
-	
+	cidr = int(cidr)
 	while (cidr > 32 or cidr < 0 or cidr % 1 != 0):
 		print ("Invalid CIDR value.")
 		cidr = input("\tCIDR : ") 
@@ -56,14 +47,13 @@ def main():
 #NETID
 	netid = [0,0,0,0]
 	for i in range(0,4):
-		netid[i] = (IP[i] & nmask[i]) 
+		netid[i] = (ip[i] & nmask[i]) 
 #BROADCAST
-	imask = [-1,-1,-1,-1]
-	bip = [-1,-1,-1,-1]
+	imask = [0,0,0,0]
+	bip = [0,0,0,0]
 	for i in range(0,4):
 		imask[i] = ~nmask[i]&255
 		bip[i] = netid[i]^imask[i]
-
 #HOST RANGE
 	fip = [0,0,0,0]
 	lip = [0,0,0,0]
@@ -73,14 +63,12 @@ def main():
 	if (cidr >=24 & cidr < 32):
 		fip[3] = fip[3]+1
 		lip[3] = lip[3]-1
-		
-#VALID HOSTS
+#PRINT
+	print ('IP :\t\t', ip[0],ip[1],ip[2],ip[3])
+	print ("NETMASK :\t", nmask[0],nmask[1],nmask[2],nmask[3])
+	print ("NET ID :\t", netid[0],netid[1],netid[2],netid[3])
+	print ("BROADCAST :\t", bip[0],bip[1],bip[2],bip[3])
+	print ("ADDRESS RANGE :\t", netid[0],netid[1],netid[2],netid[3],'-',bip[0],bip[1],bip[2],bip[3])
+	print ("HOST RANGE :\t", fip[0],fip[1],fip[2],fip[3],'-',lip[0],lip[1],lip[2],lip[3])
 
-	print ("IP :\t\t"), IP[0], '.',IP[1], '.',IP[2], '.',IP[3]
-	print ("NETMASK :\t"), nmask[0], '.',nmask[1], '.',nmask[2], '.',nmask[3]
-	print ("NET ID :\t"), netid[0], '.',netid[1], '.',netid[2], '.',netid[3]
-	print ("BROADCAST :\t"), bip[0], '.',bip[1], '.',bip[2], '.',bip[3]
-	print ("HOST RANGE :\t"), fip[0], '.',fip[1], '.',fip[2], '.',fip[3],' - ',lip[0], '.',lip[1], '.',lip[2], '.',lip[3]
-	print ("VALID HOSTS :\t"), 
-
-main()
+veneer()

@@ -75,12 +75,13 @@ def main():
 		lip[3] = lip[3]-1
 		
 #VALID HOSTS
+#n/a
 
 	print ("IP :\t\t"), IP[0], '.',IP[1], '.',IP[2], '.',IP[3]
 	print ("NETMASK :\t"), nmask[0], '.',nmask[1], '.',nmask[2], '.',nmask[3]
 	print ("NET ID :\t"), netid[0], '.',netid[1], '.',netid[2], '.',netid[3]
 	print ("BROADCAST :\t"), bip[0], '.',bip[1], '.',bip[2], '.',bip[3]
 	print ("HOST RANGE :\t"), fip[0], '.',fip[1], '.',fip[2], '.',fip[3],' - ',lip[0], '.',lip[1], '.',lip[2], '.',lip[3]
-	print ("VALID HOSTS :\t"), 
+	#print ("VALID HOSTS :\t"), 
 
 main()
