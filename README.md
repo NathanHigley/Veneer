@@ -1,10 +1,10 @@
 # Veneer
 >User-Input Based IP Calculation
-##Contribution:
+## Contribution:
  - Nathan Higley
  - Evan Richard
  - Kevin Forrister
  - Julian Underwood
-##Revision:
+## Revision:
  - Nathan Higley
  - Craig Coleman
